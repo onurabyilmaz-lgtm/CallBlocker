@@ -13,6 +13,11 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        outputFileName = "CagriEngelleyici-v${versionName}.apk"
+    }
+}
 
     buildTypes {
         release {
