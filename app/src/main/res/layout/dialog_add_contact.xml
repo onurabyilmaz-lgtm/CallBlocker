@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Isim (opsiyonel)"
+        android:textSize="13sp"
+        android:textColor="#666666"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/etContactName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ahmet Yilmaz"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Telefon Numarasi"
+        android:textSize="13sp"
+        android:textColor="#666666"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/etContactNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="+905551234567"
+        android:inputType="phone"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bu kisiye ozel mesaj (bos = varsayilan)"
+        android:textSize="13sp"
+        android:textColor="#666666"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/etContactMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Su an gorusemiyorum..."
+        android:minLines="2"
+        android:maxLines="4" />
+
+</LinearLayout>
