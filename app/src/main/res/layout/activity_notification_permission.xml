@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@color/colorBackground">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WhatsApp Destegi"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorText"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/tvNotifPermStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WhatsApp bildirim erisimi gerekli"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bu izin ne icin gerekli?"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorText"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="WhatsApp aramalarini tespit edip reddetmek icin bildirimlerinize erisimemiz gerekiyor."
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnGrantNotifPermission"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Izin Ver - Ayarlari Ac"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/btn_primary"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnSkipNotifPermission"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Atla"
+        android:textSize="13sp"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/btn_outline" />
+
+</LinearLayout>
