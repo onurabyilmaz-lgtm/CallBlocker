@@ -21,6 +21,7 @@ import java.util.Locale;
 public class CallReceiver extends BroadcastReceiver {
 
     private static final String TAG = "CallBlocker";
+    private static final long SECOND_CALL_WINDOW_MS = 15 * 60 * 1000; // 15 dakika
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -38,6 +39,16 @@ public class CallReceiver extends BroadcastReceiver {
         String incomingNumber = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
         if (incomingNumber == null) return;
 
+        String normalizedNumber = normalizeNumber(incomingNumber);
+
+        // 15 dakika içinde ikinci arama mı kontrol et
+        if (isSecondCall(prefs, normalizedNumber)) {
+            Log.d(TAG, "15dk icinde ikinci arama - geciriliyor: " + incomingNumber);
+            // İkinci aramayı sil ki bir sonraki yeniden ilk arama sayılsın
+            clearFirstCallRecord(prefs, normalizedNumber);
+            return; // Engelleme yapma, çalsın
+        }
+
         boolean blockAll = prefs.getBoolean("blockAll", false);
         boolean shouldBlock = false;
         String customMessage = prefs.getString("defaultMessage", "Su an mesgulum, sonra arayacagim.");
@@ -51,8 +62,7 @@ public class CallReceiver extends BroadcastReceiver {
                 for (int i = 0; i < contacts.length(); i++) {
                     JSONObject contact = contacts.getJSONObject(i);
                     String savedNumber = normalizeNumber(contact.getString("number"));
-                    String callerNumber = normalizeNumber(incomingNumber);
-                    if (savedNumber.equals(callerNumber) || callerNumber.endsWith(savedNumber) || savedNumber.endsWith(callerNumber)) {
+                    if (savedNumber.equals(normalizedNumber) || normalizedNumber.endsWith(savedNumber) || savedNumber.endsWith(normalizedNumber)) {
                         shouldBlock = true;
                         if (contact.has("customMessage") && !contact.getString("customMessage").isEmpty()) {
                             customMessage = contact.getString("customMessage");
@@ -66,10 +76,28 @@ public class CallReceiver extends BroadcastReceiver {
         }
 
         if (shouldBlock) {
+            // İlk aramayı kaydet
+            recordFirstCall(prefs, normalizedNumber);
             rejectCall(context);
             sendAutoSms(context, incomingNumber, customMessage);
             logBlockedCall(context, incomingNumber, prefs);
         }
+    }
+
+    private boolean isSecondCall(SharedPreferences prefs, String number) {
+        String key = "firstCall_" + number;
+        long firstCallTime = prefs.getLong(key, 0);
+        if (firstCallTime == 0) return false;
+        long now = System.currentTimeMillis();
+        return (now - firstCallTime) <= SECOND_CALL_WINDOW_MS;
+    }
+
+    private void recordFirstCall(SharedPreferences prefs, String number) {
+        prefs.edit().putLong("firstCall_" + number, System.currentTimeMillis()).apply();
+    }
+
+    private void clearFirstCallRecord(SharedPreferences prefs, String number) {
+        prefs.edit().remove("firstCall_" + number).apply();
     }
 
     private void rejectCall(Context context) {
