@@ -4,14 +4,14 @@ Gelen aramaları otomatik reddeden ve arayan kişiye SMS gönderen Android uygul
 
 ## Özellikler
 
-- ✅ Normal aramaları engelle ve SMS gönder
-- ✅ WhatsApp aramalarını engelle
-- ✅ Kişi bazlı özel mesaj ayarla
-- ✅ Tüm aramaları engelle modu
-- ✅ Belirli saatler arası aktif ol
-- ✅ 15 dakika içinde ikinci arama gelirse geçir
-- ✅ Telefon yeniden başlayınca otomatik devam
-- ✅ Xiaomi optimizasyonu desteği
+- Normal aramaları engelle ve SMS gönder
+- WhatsApp aramalarını engelle
+- Kişi bazlı özel mesaj ayarla
+- Tüm aramaları engelle modu
+- Belirli saatler arası aktif ol
+- 15 dakika içinde ikinci arama gelirse geçir
+- Telefon yeniden başlayınca otomatik devam
+- Xiaomi optimizasyonu desteği
 
 ## Nasıl Çalışır
 
@@ -21,12 +21,12 @@ Gelen aramaları otomatik reddeden ve arayan kişiye SMS gönderen Android uygul
 4. Gönderilecek mesajı yaz
 5. Kapat — arka planda çalışmaya devam eder
 
-## Kurulum
+##Kurulum
 
 APK dosyasını indirip telefonuna yükle.
 Bilinmeyen kaynaklardan yüklemeye izin vermen gerekir.
 
-## İzinler
+##İzinler
 
 | İzin | Neden |
 |------|-------|
@@ -36,17 +36,17 @@ Bilinmeyen kaynaklardan yüklemeye izin vermen gerekir.
 | Kişilere Eriş | Rehberden numara arar |
 | Bildirimlere Eriş | WhatsApp aramalarını yakalar |
 
-## Teknik Notlar
+##Teknik Notlar
 
 - Minimum Android 8.0 (API 26)
 - Xiaomi/MIUI için özel optimizasyon mevcut
 - WhatsApp aramaları Notification Listener ile yakalanır
 
-## Geliştirme
+##Geliştirme
 
-Bu proje (https://claude.ai) desteğiyle geliştirilmiştir.
+Bu proje Claude AI desteğiyle geliştirilmiştir.
 Kişisel kullanım amaçlıdır.
 
-## Lisans
+##Lisans
 
 MIT License
